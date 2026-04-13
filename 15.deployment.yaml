@@ -1,0 +1,26 @@
+apiVersion: app/v1
+kind: deployment
+metadata:
+  name: nginx
+  lables:
+    project: roboshop
+    purpose: rs-demo
+    tier: frontend
+spec:
+  replica: 3
+  selector:
+  matchlables:
+    project: roboshop
+    purpose: rs-demo
+    tier: frontend
+
+  template:
+    metadata:
+      lables: 
+        project: roboshop
+        purpose: rs-demo
+        tier: frontend
+    spec:
+      containers:
+      - name: php-redis
+        image: us-docker.pkg.dev/google-samples/containers/gke/gb-frontend:v5      
